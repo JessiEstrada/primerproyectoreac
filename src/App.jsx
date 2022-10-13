@@ -7,11 +7,13 @@ function App() {
 
   return (
     <>
-      <Header/>
-      <ListadoPaciente/>
-      <Paciente/>
-      <Formulario/>
-      <Error/>
+      <div className="mt-20">
+        <Header />
+        <Formulario />
+         <ListadoPaciente />
+        <Paciente />
+        <Error />
+      </div>
     </>
   )
 }
