@@ -1,6 +1,6 @@
 function Formulario(){
     return(
-        <div className="md:w-1/2 mx-5 lg-w-2/5">
+        <div className="md:w-1/2 mx-5 lg-w-2/5 box-sizing:border-box">
         <h2 className="text-center font-black text-3xl mb-5">Seguimiento pacientes </h2>
         <p className="TEXT-CENTER mt-5 text-lg mb-10">Añade pacientes <span className="text-indigo-700 font-bold">Administrarlos</span></p>
         <form className="bg-slate-300 py-10 px-8 shadow-md rounded-lg">

@@ -11,8 +11,7 @@ function App() {
         <Header />
         <Formulario />
          <ListadoPaciente />
-        <Paciente />
-        <Error />
+        
       </div>
     </>
   )
