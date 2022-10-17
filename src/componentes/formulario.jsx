@@ -1,33 +1,76 @@
-function Formulario(){
-    return(
-        <div className="md:w-1/2 mx-5 lg-w-2/5 box-sizing:border-box">
-        <h2 className="text-center font-black text-3xl mb-5">Seguimiento pacientes </h2>
-        <p className="TEXT-CENTER mt-5 text-lg mb-10">Añade pacientes <span className="text-indigo-700 font-bold">Administrarlos</span></p>
-        <form className="bg-slate-300 py-10 px-8 shadow-md rounded-lg">
-            <div>
-                <label className="block text-gray-700 uppercase font-bold">Nombre Mascota:</label>
-                <input className="p-2 rounded-md w-full mt-2 placeholder-gray-500"
-                type="text"
-                placeholder="Nombre de la mascota"/>
-                <label className="block text-gray-700 uppercase font-bold">Nombre Propietario:</label>
-                <input className="p-2 rounded-md w-full mt-2 placeholder-gray-500"
-                type="text"
-                placeholder="Nombre del propietario"/>
-                <label className="block text-gray-700 uppercase font-bold">Email:</label>
-                <input className="p-2 rounded-md w-full mt-2 placeholder-gray-500"
-                type="text"
-                placeholder="correo"/>
-                <label className="block text-gray-700 uppercase font-bold">Fecha de alta:</label>
-                <input className="p-2 rounded-md w-full mt-2 placeholder-gray-500"
-                type="text"
-                placeholder="Alta"/>
-                <label className="block text-gray-700 uppercase font-bold">Sintomas:</label>
-                <input className="p-2 rounded-md w-full mt-2 placeholder-gray-500"
-                type="text"
-                placeholder="Sintomas"/>
+import { useState, useEffect } from 'react'
+import Error from './error' //importo la funcion
+function Formulario() {
+    const [mascota, setMascota] = useState('');//si quiero iniciar como arreglo u objeto pongo los simbolos correspondiente
+    const [propietario, setPropietario] = useState('');
+    const [email, setEmail] = useState('');
+    const [alta, setAlta] = useState('');
+    const [sintomas, setSintomas] = useState('');
+    const [error, setError] = useState(false);
+    const validarFormulario=((e) => {
+        e.preventDefault()
+        if ([mascota, propietario, email, alta, sintomas].includes('')) {
+            console.log("Todos los campos son obligatorios")
+            setError(true)
+            return
+        }
+        setError(false)
+        setMascota('')
+        setPropietario('')
+        setEmail('')
+        setAlta('')
+        setSintomas('')
 
-            </div>
-        </form>
+    })
+    //el primer erro es la variable del state y el segundo es la funcion del componente.... si la variable error es verdadera el parrafo toma las caracteristicas de la funcion error
+    //entre corchetes poqu es parte de use State
+    //todo lo que va dentro del return se muestra dentro de pantalla
+    return (
+        <div className="md:w-1/2 mx-5 lg-w-2/5 box-sizing:border-box">
+            <h2 className="text-center font-black text-3xl mb-5">Seguimiento pacientes </h2>
+            <p className="TEXc T-CENTER mt-5 text-lg mb-10">Añade pacientes <span className="text-indigo-700 font-bold">Administrarlos</span></p>
+            <form className="bg-slate-300 py-10 px-8 shadow-md rounded-lg " onSubmit={validarFormulario}>
+                <div>
+                {error&&<Error> <p>Todos los campos son obligatorios</p></Error>}
+                    <div>
+                        <label className="block text-gray-700 uppercase font-bold">Nombre Mascota:</label>
+                        <input className="p-2 rounded-md w-full mt-2 placeholder-gray-500"
+                            type="text"
+                            placeholder="Nombre de la mascota"
+                            value={mascota} onChange={(e) => setMascota(e.target.value)} /> 
+                            
+                    </div>
+                    <div><label className="block text-gray-700 uppercase font-bold">Nombre Propietario:</label>
+                        <input className="p-2 rounded-md w-full mt-2 placeholder-gray-500"
+                            type="text"
+                            placeholder="Nombre del propietario"
+                            value={propietario}
+                            onChange={(e) => setPropietario(e.target.value)} />
+                    </div>
+                    <div><label className="block text-gray-700 uppercase font-bold">Email:</label>
+                        <input className="p-2 rounded-md w-full mt-2 placeholder-gray-500"
+                            type="text"
+                            placeholder="correo"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)} /></div>
+                    <div><label className="block text-gray-700 uppercase font-bold">Fecha de alta:</label>
+                        <input className="p-2 rounded-md w-full mt-2 placeholder-gray-500"
+                            type="text"
+                            placeholder="Alta"
+                            value={alta}
+                            onChange={(e) => setAlta(e.target.value)} />
+                    </div>
+                    <div>
+                        <label className="block text-gray-700 uppercase font-bold">Sintomas:</label>
+                        <input className="p-2 rounded-md w-full mt-2 placeholder-gray-500"
+                            type="text"
+                            placeholder="Sintomas"
+                            value={sintomas}
+                            onChange={(e) => setSintomas(e.target.value)} />
+                    </div>
+                </div>
+                <input type="submit" className="bg-indigo-700 p-3 text-white mt-5 uppercase w-full rounded-md hover:bg-indigo-400 cursor-pointer transition-colors font-bold" />
+            </form>
         </div>
     )
 }

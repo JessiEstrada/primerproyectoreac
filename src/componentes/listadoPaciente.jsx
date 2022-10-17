@@ -1,4 +1,5 @@
-function ListadoPaciente() {
+function ListadoPaciente() { //la funcion debe inicias con mayusculas
+   
     return (
         <div className="md:w-1/2 lg:w-3/5 overflow-scroll md:h-screen box-sizing:border-box ">
             <h2 className="font-black text-3xl text-center">Lista de pacientes</h2>
