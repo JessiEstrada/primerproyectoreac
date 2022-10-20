@@ -24,7 +24,7 @@ function Formulario({ setPacientes, pacientes, paciente, setPaciente }) {
         if (paciente.id) {
 
         } else {
-            objetoPaciente.id = generarId
+            objetoPaciente.id = generarId()
             setPacientes([...pacientes, objetoPaciente])
         }
 
